@@ -21,6 +21,7 @@ namespace cs_tests
         public class BotLeft: Top
         {
             public bool IsGood = false;
+            public uint Id = 0;
             public BotLeft(bool isgood, string name): base(name)
             {
                 IsGood = isgood;
@@ -38,6 +39,7 @@ namespace cs_tests
             list.Add(new Top("left"));
             list.Add(null);
             Top correct = new BotLeft(true, "left");
+            (correct as BotLeft).Id = uint.MaxValue;
             list.Add(correct);
             list.Add(new BotLeft(false, "left"));
             list.Add(new BotLeft(false, "left"));
@@ -45,16 +47,16 @@ namespace cs_tests
             list.Add(new BotLeft(false, "left"));
             list.Add(new BotLeft(false, "left"));
             list.Add(new BotLeft(false, "left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(new BotRight("left"));
-            list.Add(null);
-            list.Add(null);
+            list.Add(new BotLeft(false, "left"));
+            list.Add(new BotLeft(false, "left"));
+            list.Add(new BotLeft(false, "left"));
+            list.Add(new BotLeft(false, "left"));
+            list.Add(new BotRight("right"));
+            list.Add(new BotRight("right"));
+            list.Add(new BotRight("right"));
+            list.Add(new BotRight("right"));
+            list.Add(new BotRight("right"));
+            list.Add(new BotRight("right"));
             list.Add(null);
             list.Add(null);
             list.Add(null);
@@ -63,60 +65,66 @@ namespace cs_tests
             list.Add(null);
 
             var watch = new System.Diagnostics.Stopwatch();
+            int count = 0;
+
             watch.Start();
-
             for (int i = 0; i < 100000; i++)
             {
                 foreach (Top t in list)
                 {
-                    if ((t as BotLeft)?.IsGood ?? false)
+                    if (((t as BotLeft)?.Id ?? uint.MaxValue) == uint.MaxValue)
                     {
-                        if (t != correct)
+                        if (t is BotLeft && t != correct)
                         {
                             throw new Exception("TOZ");
                         }
+                        count++;
                     }
                 }
             }
 
             watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms, {count}");
 
+            count = 0;
             watch.Restart();
             for (int i = 0; i < 100000; i++)
             {
                 foreach (Top t in list)
                 {
-                    if ((t != null) && (t is BotLeft) && (t as BotLeft).IsGood)
+                    if ((t is BotRight) || (((t as BotLeft)?.Id ?? uint.MaxValue) == uint.MaxValue))
                     {
-                        if (t != correct)
+                        if (t is BotLeft && t != correct)
                         {
                             throw new Exception("TOZ");
                         }
+                        count++;
                     }
                 }
             }
 
             watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms, {count}");
 
+            count = 0;
             watch.Restart();
             for (int i = 0; i < 100000; i++)
             {
                 foreach (Top t in list)
                 {
-                    if ((t is BotLeft botleft) && botleft.IsGood)
+                    if (!(t is BotLeft botleft) || botleft.Id == uint.MaxValue)
                     {
-                        if (t != correct)
+                        if (t is BotLeft && t != correct)
                         {
                             throw new Exception("TOZ");
                         }
+                        count++;
                     }
                 }
             }
 
             watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms, {count}");
         }
     }
 }
