@@ -1,0 +1,71 @@
+# known APN database
+
+20601 m2minternet.proximus.be
+20610 matma.1k.be
+24007 m2m.tele2.com
+310410 wap.cingular
+
+# Soracom (Japan)
+44051 soracom.io sora sora
+
+# Optus (Australia)
+50502 yesinternet
+
+# SK Telecom (Korea)
+45005 lte-internet.sktelecom.com
+
+# SmarTone (Hong Kong)
+45406 smartone
+
+# verizon (USA)
+310004 vzwinternet
+310005 vzwinternet
+310010 vzwinternet
+310012 vzwinternet
+310013 vzwinternet
+310350 vzwinternet
+311110 vzwinternet
+311270 vzwinternet
+311271 vzwinternet
+311272 vzwinternet
+311273 vzwinternet
+311274 vzwinternet
+311275 vzwinternet
+311276 vzwinternet
+311277 vzwinternet
+311278 vzwinternet
+311279 vzwinternet
+311280 vzwinternet
+311281 vzwinternet
+311282 vzwinternet
+311283 vzwinternet
+311284 vzwinternet
+311285 vzwinternet
+311286 vzwinternet
+311287 vzwinternet
+311288 vzwinternet
+311289 vzwinternet
+311390 vzwinternet
+311480 vzwinternet
+311481 vzwinternet
+311482 vzwinternet
+311483 vzwinternet
+311484 vzwinternet
+311485 vzwinternet
+311486 vzwinternet
+311487 vzwinternet
+311488 vzwinternet
+311489 vzwinternet
+312770 vzwinternet
+
+# Bell Canada operator
+30261 mnet.bell.ca.ioe
+302610 mnet.bell.ca.ioe
+302630 mnet.bell.ca.ioe
+30264 mnet.bell.ca.ioe
+302640 mnet.bell.ca.ioe
+302651 mnet.bell.ca.ioe
+302660 mnet.bell.ca.ioe
+30269 mnet.bell.ca.ioe
+302690 mnet.bell.ca.ioe
+302880 mnet.bell.ca.ioe

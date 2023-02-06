@@ -1,0 +1,17 @@
+﻿<div class="content-explorer" [ngStyle]="{'padding-left': 6 * Level }">
+
+    <ul *ngFor="let item of Content | keyvalue; let i = index">
+        <li>
+
+            <span class="key">{{ item?.key }}</span>
+
+            <content-explorer [Data]="item.value" [Level]="Level"></content-explorer>
+        
+        </li>
+    </ul>
+
+    <div *ngIf="Value !== undefined">
+        <span>{{ ': ' }}<span class="value">{{ Value }}</span></span>
+    </div>
+
+</div>
